@@ -1,0 +1,36 @@
+version: 2
+
+sources:
+
+  - name: greenery 
+    schema: public
+    database: dbt
+
+    tables:
+      - name: addresses 
+        description: >
+          Contains address information for each delivery
+      
+      - name: events
+        description: >
+          Contains event activity
+      
+      - name: orders
+        description: >
+          Contains order information
+      
+      - name: order_items
+        description: >
+          Contains the id of the order, the id of the product and the quantity of the products
+            
+      - name: products
+        description: >
+          Contains products information
+      
+      - name: promos
+        description: >
+          Contains promo information
+      
+      - name: users
+        description: >
+          Contains user personal information
