@@ -1,0 +1,28 @@
+version: 2
+
+models:
+  - name: fact_page_views
+    description: >
+      Contains the events related to page_views
+
+    columns:
+      - name: event_id
+        description: UUID of each unique event on the platform
+        tests:
+          - not_null
+          - unique
+
+      - name: session_id
+        description: UUID of each browsing session on the platform which can contain many events
+          
+      - name: user_id
+        description: UUID of the user that this event is associated with
+
+      - name: product_id
+        description: If the event is specific to a product
+           
+      - name: page_url
+        description: URL that the event happened on
+
+      - name: created_at
+        description: Timestamp of the event

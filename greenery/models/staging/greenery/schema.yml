@@ -1,13 +1,16 @@
 version: 2
 
 models:
-  - name: src_addresses
+  - name: stg_addresses
     description: >
       Contains address information for the delivery
 
     columns:
       - name: address_id
         description: UUID for each unique address on platform
+        tests:
+          - not_null
+          - unique
 
       - name: address
         description: The first few lines of the address
@@ -22,13 +25,16 @@ models:
         description: country this delivery address is based in
 
 
-  - name: src_events
+  - name: stg_events
     description: >
       Contains event activity
 
     columns:
       - name: event_id
         description: UUID of each unique event on the platform
+        tests:
+          - not_null
+          - unique
 
       - name: session_id
         description: UUID of each browsing session on the platform which can contain many events
@@ -52,13 +58,16 @@ models:
         description: If the event is specific to a product
 
 
-  - name: src_orders
+  - name: stg_orders
     description: >
       Contains order information
 
     columns:
       - name: order_id
         description: UUID for each unique order on platform
+        tests:
+          - not_null
+          - unique
 
       - name: user_id
         description: UserId of the user that placed this order
@@ -97,7 +106,7 @@ models:
         description: Status of the order
 
 
-  - name: src_order_items
+  - name: stg_order_items
     description: >
       Contains the id of the order, the id of the product and the quantity of the products
 
@@ -112,13 +121,16 @@ models:
         description: Number of units of the product in this order
 
 
-  - name: src_products
+  - name: stg_products
     description: >
       Contains products information
 
     columns:
       - name: product_id
         description: UUID for each unique product on platform
+        tests:
+          - not_null
+          - unique
 
       - name: product_name
         description: Name of the product
@@ -130,13 +142,16 @@ models:
         description: Amount of the inventory we have for this product
    
 
-  - name: src_promos
+  - name: stg_promos
     description: >
       Contains promo information
 
     columns:
       - name: promo_id
         description: Each unique promocode on platform
+        tests:
+          - not_null
+          - unique
 
       - name: promo_discount
         description: Absolute dollar amount that is given off with the code
@@ -145,13 +160,16 @@ models:
         description: Is the promo code active or disabled
 
 
-  - name: src_users
+  - name: stg_users
     description: >
       Contains user personal information
 
     columns:
       - name: user_id
         description: UUID for each unique user on platform
+        tests:
+          - not_null
+          - unique
 
       - name: first_name
         description: first name of the user

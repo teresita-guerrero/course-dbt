@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: fact_user_orders
+    description: >
+      Contains order information at the user level
+
+    columns: 
+      - name: user_id
+        description: UUID of the user that this event is associated with
+        tests:
+          - not_null
+          - unique
+      
+      - name: total_orders
+        description: The sum of total orders per user
+
+      - name: total_products_ordered
+        description: The sum of total products ordered
+
+      - name: total_spent
+        description: The sum of the total spend

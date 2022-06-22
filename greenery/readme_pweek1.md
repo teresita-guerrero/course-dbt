@@ -5,7 +5,7 @@
 ``` sql
 select 
 count(distinct user_id)
-from dbt_teresita_g.src_users
+from dbt_teresita_g.stg_users
 ```
 > 130
 
@@ -16,7 +16,7 @@ with orders_per_hour as (
   select
     date_trunc('hour', created_at) as order_hour
     , count(distinct order_id) as orders
-  from dbt_teresita_g.src_orders
+  from dbt_teresita_g.stg_orders
   group by 1
 )
 select round(avg(orders), 2) as avg_orders_per_hour
@@ -31,7 +31,7 @@ with base as (
   select 
     sum (delivered_at - created_at) as delivery_time,
     count(*) qty_deliveries 
-    from dbt_teresita_g.src_orders
+    from dbt_teresita_g.stg_orders
     where delivered_at is not null
 )
 select delivery_time/qty_deliveries
@@ -49,7 +49,7 @@ with base as (
     when count(*) = 2 then '2 orders'
     when count(*) >= 3 then '3+ orders' 
   end total_orders
-  from dbt_teresita_g.src_orders
+  from dbt_teresita_g.stg_orders
   group by user_id
 )
 select 
@@ -73,7 +73,7 @@ with base as
   select 
     date_trunc('hour', created_at) as hour
     , count(distinct session_id) AS num_sessions
-  FROM dbt_teresita_g.src_events
+  FROM dbt_teresita_g.stg_events
   GROUP BY hour
 )
 select 
