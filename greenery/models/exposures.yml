@@ -1,0 +1,13 @@
+version: 2
+
+exposures:  
+  - name: Greenery Events Dashboard
+    description: >
+      Models that are used in our product funnel dashboard
+    type: dashboard
+    maturity: medium
+    owner:
+      name: Teresita Guerrero
+      email: teresita@greenery.com
+    depends_on:
+      - ref('ct_sessions_events')
