@@ -65,6 +65,9 @@ models:
   - name: fact_events
     description: >
       Contains event activity
+    tests:
+      - dbt_utils.equal_rowcount:
+          compare_model: ref('stg_events')
 
     columns:
       - name: event_id
@@ -92,7 +95,7 @@ models:
         description: If the event is specific to an order (mostly used for checkout)
 
       - name: created_at
-        description: Timestamp of the event        
+        description: Timestamp of the event    
 
   - name: fact_orders
     description: >
